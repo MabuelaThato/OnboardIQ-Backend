@@ -10,7 +10,7 @@ WORKDIR /app/
 COPY . /app/
 
 ARG VERSION
-ENV VERSION=${VERSION}
+ENV VERSION=1.0.0
 
 RUN mvn clean package -DskipTests
 
