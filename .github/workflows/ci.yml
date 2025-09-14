@@ -78,9 +78,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config --global user.name "GitHub Actions"
-          git config --global user.email "actions@github.com"
-          make publish-${{ github.event.inputs.release_type }}
+          git config --global user.name "MabuelaThato"
+          git config --global user.email "mabuelathato03@gmail.com"
 
   docker_build:
     runs-on: ubuntu-latest
