@@ -38,7 +38,9 @@ release:
 	@echo "Reverting to snapshot version..."
 	sed -i "s/<version>$(current_version)<\/version>/<version>$(dev_ver)<\/version>/" pom.xml
 	rm -f libs/ticketsystem-*.jar
-	@cp target/ticketsystem-$(current_version)-jar-with-dependencies.jar libs/ticketsystem-$(current_version).jar  # Adjust JAR name if different
+	@cp target/ticketsystem-$(current_version)-jar-with-dependencies.jar libs/ticketsystem-$(current_version).jar
+	git tag -a v$(current_version) -m "Release version $(current_version)"
+	git push origin v$(current_version)
 	git add libs/ticketsystem-$(current_version).jar
 
 # Git tagging
