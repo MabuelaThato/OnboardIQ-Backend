@@ -44,9 +44,10 @@ release:
 
 # Git tagging
 tag:
+	@git tag -d v$(current_version) || true  # Delete local tag if exists
+	@git push origin :refs/tags/v$(current_version) || true  # Delete remote tag if exists
 	git tag -a v$(current_version) -m "Release version $(current_version)"
 	git push origin v$(current_version)
-
 # Bump patch version
 bump-patch:
 	@$(call bump_version)
