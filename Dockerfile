@@ -17,7 +17,7 @@ FROM eclipse-temurin:21-jre
 WORKDIR /app/
 COPY . /app/
 
-COPY --from=release libs/ticketsystem-1.0.0.jar /app/ticketsystem-1.0.0.jar
+COPY libs/ticketsystem-1.0.0.jar /app/ticketsystem-1.0.0.jar
 
 EXPOSE 7000
 
