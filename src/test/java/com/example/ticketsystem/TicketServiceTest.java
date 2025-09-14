@@ -4,10 +4,9 @@ import com.example.ticketsystem.model.Ticket;
 import com.example.ticketsystem.service.TicketService;
 import org.junit.jupiter.api.Test;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -43,5 +42,11 @@ public class TicketServiceTest {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    @Test
+    public void testTicketRepositorySave() {
+        TicketService service = new TicketService();
+        Ticket saved = service.createTicket("trans@example.com", "test@example.com", "test info");
+        assertNotNull(saved);
     }
 }

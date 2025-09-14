@@ -18,7 +18,11 @@ public class TicketControllerTest {
         controller.registerRoutes(app);
 
         JavalinTest.test(app, (server, client) -> {
-            var response = client.post("/tickets", "acquisioner=acq@example.com&transactioner=trans@example.com&clientInfo=info");
+            var response = client.post(
+                    "/tickets",
+                    "acquisioner=acq@example.com&transactioner=trans@example.com&clientInfo=info",
+                    request -> request.header("Content-Type", "application/x-www-form-urlencoded")
+            );
             assertEquals(200, response.code());
             assertTrue(response.body().string().contains("\"status\":\"active\""));
         });
