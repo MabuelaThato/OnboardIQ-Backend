@@ -19,7 +19,7 @@ FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
-COPY --from=build target/ticketsystem-${VERSION}-jar-with-dependencies.jar.jar /app/ticketsystem-${VERSION}.jar
+COPY --from=build target/ticketsystem-${VERSION}-jar-with-dependencies.jar /app/ticketsystem-${VERSION}.jar
 
 EXPOSE 7000
 
