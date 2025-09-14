@@ -33,10 +33,10 @@ test-all: test-unit-tests
 # Release target
 release:
 	@echo "Switching to release version..."
-	sed -i "s/<version>$(dev_ver)</version>/<version>$(current_version)</version>/" pom.xml
+	sed -i "s#<version>$(dev_ver)</version>#<version>$(current_version)</version>#" pom.xml
 	mvn clean package -DskipTests
 	@echo "Reverting to snapshot version..."
-	sed -i "s/<version>$(current_version)</version>/<version>$(dev_ver)</version>/" pom.xml
+	sed -i "s#<version>$(current_version)</version>#<version>$(dev_ver)</version>#" pom.xml
 	rm -f libs/ticketsystem-*.jar
 	@cp target/ticketsystem-$(current_version)-jar-with-dependencies.jar libs/ticketsystem-$(current_version).jar
 	git add libs/ticketsystem-$(current_version).jar
