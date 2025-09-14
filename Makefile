@@ -5,7 +5,7 @@ SHELL := /bin/bash
 version_file = version
 current_version = $(shell cat $(version_file))
 dev_ver = $(current_version)-SNAPSHOT
-IMAGE_NAME := ghcr.io/MabuelaThato/onboardiq-backend
+IMAGE_NAME := ghcr.io/mabuelathato/onboardiq-backend
 TAG := $(shell git rev-parse --short HEAD)
 PORT := 7000
 
@@ -33,15 +33,14 @@ test-all: test-unit-tests
 # Release target
 release:
 	@echo "Switching to release version..."
-	sed -i "s/<version>$(dev_ver)<\/version>/<version>$(current_version)<\/version>/" pom.xml
+	sed -i "s/<version>$(dev_ver)</version>/<version>$(current_version)</version>/" pom.xml
 	mvn clean package -DskipTests
 	@echo "Reverting to snapshot version..."
-	sed -i "s/<version>$(current_version)<\/version>/<version>$(dev_ver)<\/version>/" pom.xml
+	sed -i "s/<version>$(current_version)</version>/<version>$(dev_ver)</version>/" pom.xml
 	rm -f libs/ticketsystem-*.jar
 	@cp target/ticketsystem-$(current_version)-jar-with-dependencies.jar libs/ticketsystem-$(current_version).jar
-	git tag -a v$(current_version) -m "Release version $(current_version)"
-	git push origin v$(current_version)
 	git add libs/ticketsystem-$(current_version).jar
+	$(MAKE) tag
 
 # Git tagging
 tag:

@@ -81,6 +81,7 @@ jobs:
         run: |
           git config --global user.name "MabuelaThato"
           git config --global user.email "mabuelathato03@gmail.com"
+          make release
 
   docker_build:
     runs-on: ubuntu-latest
