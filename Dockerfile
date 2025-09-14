@@ -9,9 +9,6 @@ RUN apt-get update && \
 WORKDIR /app/
 COPY . /app/
 
-ARG VERSION
-ENV VERSION=1.0.0
-
 RUN mvn clean package -DskipTests
 
 # Runtime stage
@@ -19,9 +16,9 @@ FROM eclipse-temurin:21-jre
 
 WORKDIR /app
 
-COPY --from=build target/ticketsystem-${VERSION}-jar-with-dependencies.jar /app/ticketsystem-${VERSION}.jar
+COPY --from=build target/ticketsystem-1.0.0-jar-with-dependencies.jar /app/ticketsystem-1.0.0.jar
 
 EXPOSE 7000
 
-ENTRYPOINT ["java", "-jar", "/app/ticketsystem-${VERSION}.jar"]
+ENTRYPOINT ["java", "-jar", "/app/ticketsystem-1.0.0.jar"]
 CMD []
