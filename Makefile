@@ -5,7 +5,7 @@ SHELL := /bin/bash
 version_file = version
 current_version = $(shell cat $(version_file))
 dev_ver = $(current_version)-SNAPSHOT
-IMAGE_NAME := ghcr.io/MabuelaThato/OnboardIQ-Backend
+IMAGE_NAME := ghcr.io/MabuelaThato/onboardiq-backend
 TAG := $(shell git rev-parse --short HEAD)
 PORT := 7000
 
