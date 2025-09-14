@@ -98,6 +98,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push Docker Image
         run: |
+          git config --global user.email "mabuelathato03@gmail.com"
+          git config --global user.name "MabuelaThato"
           make release
           make docker-build
           make docker-push
