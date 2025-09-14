@@ -98,5 +98,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build and Push Docker Image
         run: |
+          make release
           make docker-build
           make docker-push
