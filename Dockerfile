@@ -14,9 +14,10 @@ RUN mvn clean package -DskipTests
 # Runtime stage
 FROM eclipse-temurin:21-jre
 
-WORKDIR /app
+WORKDIR /app/
+COPY . /app/
 
-COPY --from=build libs/ticketsystem-1.0.0.jar /app/ticketsystem-1.0.0.jar
+COPY --from=release libs/ticketsystem-1.0.0.jar /app/ticketsystem-1.0.0.jar
 
 EXPOSE 7000
 
