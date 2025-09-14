@@ -6,8 +6,8 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 public class EmailService {
-    private final String username = "your-gmail@gmail.com"; // Replace
-    private final String password = "your-app-password"; // Replace (use app password for Gmail)
+    private final String username = "iq.onboard@gmail.com";
+    private final String password = "vlcvlutkmozbkxhv"; // Replace (use app password for Gmail)
 
     public void sendEmail(String to, String subject, String bodyText) {
         Properties prop = new Properties();

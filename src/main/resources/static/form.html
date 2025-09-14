@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter IBS Number</title>
+</head>
+<body>
+<h1>Enter IBS Number for Ticket</h1>
+<form action="/tickets/{id}/update" method="post">  <!-- Replace {id} with actual ID in URL or JS -->
+    <input type="hidden" name="id" value="{{ticketId}}">  <!-- Populate via JS or server -->
+    <label for="ibsNumber">IBS Number:</label>
+    <input type="text" id="ibsNumber" name="ibsNumber" required>
+    <button type="submit">Submit</button>
+</form>
+<script>
+    // Simple JS to get ID from URL param
+    const urlParams = new URLSearchParams(window.location.search);
+    const ticketId = urlParams.get('id');
+    document.querySelector('input[name="id"]').value = ticketId;
+    document.querySelector('form').action = `/tickets/${ticketId}/update`;
+</script>
+</body>
+</html>

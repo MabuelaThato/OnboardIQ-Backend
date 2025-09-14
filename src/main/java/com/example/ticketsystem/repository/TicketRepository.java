@@ -60,7 +60,7 @@ public class TicketRepository {
     }
 
     public Ticket update(Ticket ticket) {
-        String sql = "UPDATE tickets SET ibs_number = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE tickets SET ibsNumber = ?, status = ? WHERE id = ?";
         try (Connection conn = App.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, ticket.getIbsNumber());
@@ -130,12 +130,12 @@ public class TicketRepository {
     private Ticket mapToTicket(ResultSet rs) throws SQLException {
         Ticket ticket = new Ticket();
         ticket.setId(UUID.fromString(rs.getString("id")));
-        ticket.setAcquisionerName(rs.getString("acquisioner_name"));
-        ticket.setTransactionerName(rs.getString("transactioner_name"));
-        ticket.setClientInfo(rs.getString("client_info"));
-        ticket.setIbsNumber(rs.getString("ibs_number"));
+        ticket.setAcquisionerName(rs.getString("acquisionerName"));
+        ticket.setTransactionerName(rs.getString("transactionerName"));
+        ticket.setClientInfo(rs.getString("clientInfo"));
+        ticket.setIbsNumber(rs.getString("ibsNumber"));
         ticket.setStatus(rs.getString("status"));
-        ticket.setCreatedAt(rs.getTimestamp("created_at"));
+        ticket.setCreatedAt(rs.getTimestamp("createdAt"));
         return ticket;
     }
 }
