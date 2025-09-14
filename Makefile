@@ -3,7 +3,7 @@ SHELL := /bin/bash
 
 # File paths
 version_file = version
-current_version = $(shell cat $(version_file))
+current_version = 1.0.0
 dev_ver = $(current_version)-SNAPSHOT
 IMAGE_NAME := ghcr.io/mabuelathato/onboardiq-backend
 TAG := $(shell git rev-parse --short HEAD)
